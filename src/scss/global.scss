@@ -1,0 +1,178 @@
+////// VARIABLES //////
+
+$breakpoint: 720px;
+$gradient-bottom: #20afa4;
+$gradient-top: #ffffff;
+
+$font-main: 'Ubuntu', sans-serif;
+
+$contact-list: ('email': 3.4s, 'github': 3.8s, 'twitter': 4.2s, 'linkedin': 4.6s);
+
+@mixin contact-icons {
+	@each $method, $delay in $contact-list {
+		.contact-#{$method} {
+			@include animation(moveUp .6s $delay cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards);
+			background: url('/assets/img/#{$method}-icon.svg') no-repeat;
+		}
+	}
+}
+
+$animate-top: -250px;
+
+$mobile-animate-top: -155px;
+
+// Import Mixins
+@import '_mixins';
+
+// Import Animations
+@import '_animations';
+
+/////// RESET //////
+
+html, body {
+	margin: 0;
+	min-height: 100%;
+	padding: 0;
+}
+
+section, header {
+	width: 100%;
+}
+
+section {
+	@include box-sizing(border-box);
+	position: relative;
+}
+
+////// TYPOGRAPHY //////
+
+// Import Fonts
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+////// MAIN STYLES //////
+
+canvas#star-canvas {
+	@include linearGradient($gradient-bottom, $gradient-top);
+	position: fixed;
+	top: 0;
+}
+
+header#header-main {
+	position: relative;
+	z-index: 2;
+	img {
+		max-width: 150px;
+		padding: 20px;
+		width: 20%;
+	}
+}
+
+section#main {
+
+    #card {
+		margin: auto;
+		position: relative;
+    	bottom: 0;
+    	font-family: $font-main;
+    	left: 0;
+    	right: 0;
+    	top: 0;
+    	width: 580px;
+
+    	#jenbo {
+			@include animation(popIn 2s 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards);
+			@include transform(scale(.47));
+			margin: auto;
+			min-width: 200px;
+			opacity: 0;
+			position: absolute;
+			top: -50px;
+			z-index: 9;
+			#left-eye {
+				@include transform-origin(54px 67px);
+			}
+			#right-eye {
+				@include transform-origin(88px 67px);
+			}
+			#left-eye, #right-eye {
+				@include animation(blink 6s 2s infinite);
+			}
+		}
+
+    	#card-content {
+    		background-color: #FFF;
+    		max-width: 700px;
+    		opacity: 0;
+    		padding: 30px;
+    		position: absolute;
+    		top: 150px;
+			@include animation(fadeIn .8s 2.2s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards);
+
+			.content {
+				@include animation(modalContentFadeIn .8s 3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards);
+				opacity: 0;
+				overflow: hidden;
+				position: relative;
+			}
+
+			p {
+				font-size: em(14);
+				line-height: em(24);
+				text-align: center;
+			}
+
+			ul {
+				@include contact-icons();
+				margin: 30px auto 0;
+				overflow: hidden;
+				padding: 0;
+				width: 250px;
+				li {
+					@include transition(all, 500ms, linear);
+					display: block;
+					float: left;
+					height: 30px;
+					list-style: none;
+					margin-left: 40px;
+					opacity: 1;
+					position: relative;
+					width: 30px;
+					top: 30px;
+					&:first-child {
+						margin-left: 0;
+					}
+					&:hover {
+						opacity: .8;
+					}
+					a {
+						display: block;
+						text-indent: 9999px;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+svg {
+	position: absolute;
+	width: 100%;
+}
+
+@media (max-width: $breakpoint) {
+	html, body {
+		min-height: 750px;
+	}
+	section#main {
+		#card {
+			width: 400px;
+			#card-content {
+				top: 110px;
+				p {
+					font-size: em(12);
+				}
+			}
+		}
+	}
+}

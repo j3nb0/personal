@@ -1,0 +1,22 @@
+{
+  "name": "jenbo",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "watches": {
+    "build-css": "src/scss/**"
+  },
+  "scripts": {
+    "build-css": "node-sass src/scss/global.scss -o assets/css/",
+    "watch": "rerun-script"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^3.4.2",
+    "rerun-script": "^0.6.0"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}

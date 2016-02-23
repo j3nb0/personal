@@ -1,0 +1,104 @@
+@include keyframes(popIn) {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    @include transform(scale(.7));
+  }
+  40% {
+    opacity: 1;
+    @include transform(scale(.47));
+  }
+  70% {
+    opacity: 1;
+    @include transform(scale(.47));
+    top: -50px;
+  }
+  100% {
+    opacity: 1;
+    @include transform(scale(.47));
+    top: $animate-top;
+  }
+}
+
+@media (max-width: $breakpoint) {
+  @include keyframes(popIn) {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+      @include transform(scale(.7));
+    }
+    40% {
+      opacity: 1;
+      @include transform(scale(.47));
+    }
+    70% {
+      opacity: 1;
+      @include transform(scale(.47));
+      top: -50px;
+    }
+    100% {
+      opacity: 1;
+      @include transform(scale(.47));
+      top: $mobile-animate-top;
+    }
+  }
+}
+
+@include keyframes(moveUp) {
+  0% {
+    top: 30px;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@include keyframes(hover) {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -10px;
+  }
+}
+
+@include keyframes(fadeIn) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@include keyframes(modalContentFadeIn) {
+  0% {
+    opacity: 0;
+    top: 20px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@include keyframes(blink) {
+  
+  90% {
+    @include transform(scaleY(1));
+  }
+
+  92% {
+    @include transform(scaleY(1));
+  }
+  
+  91% {
+    @include transform(scaleY(0));
+  }
+
+}
